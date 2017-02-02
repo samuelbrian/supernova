@@ -1,0 +1,24 @@
+
+                   ::::::::::::::::::::::::::::::::::::::::
+                   ::INSTALLING A SUPERNOVA BOOT DISKETTE::
+                   ::::::::::::::::::::::::::::::::::::::::
+
+
+1) Either  make a  backup copy  of your  DOS diskette  (must be version 2.0  or
+   higher) or use any diskette that has a copy of command.com on it.
+
+2) Turn on  your computer with the  DOS diskette in drive A:  (Note:  Remember,
+   your disk will now become the "boot" disk.)
+
+3) After  the  A>  prompt  appears  remove  your DOS  diskette  and insert  the
+   SUPERNOVA diskette into drive A:
+
+4) Enter INSTALL and press the <enter> key (or <return>, etc.)
+
+5) The INSTALL program  will explain  itself.  At the  bottom,  in  highlighted
+   letters  it ask you to  remove the  SUPERNOVA disk  and insert  your  "boot"
+   diskette.  Do this, then press any key to continue.
+
+6) A few  seconds  later  your  "boot"  diskette  will be  properly  installed.
+
+

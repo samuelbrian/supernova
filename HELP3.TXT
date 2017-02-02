@@ -1,0 +1,23 @@
+
+                   ::::::::::::::::::::::::::::::::::::::::
+                   ::INSTALLING A SUPERNOVA BOOT DISKETTE::
+                   ::::::::::::::::::::::::::::::::::::::::
+
+
+7) Now that you have a  properly  installed  "boot" disk you are  ready to play
+   SUPERNOVA.  But first,  due to the way  DOS  handles  files,  you must  turn
+   your computer off and back on again.  This time make sure  your "boot"  disk
+   is in drive a: when the computer is turned on.  DOS  needs to find the  file
+   information  that is now  in the  config.sys  file,  and it only  reads this
+   this information when the computer is turned on.
+
+*  REMEMBER:  From now on,  whenever you want  to play  SUPERNOVA,  you will be
+   required to power-on  your  computer with your "boot"  diskette in  drive A:
+
+*  And again,  an easier way  to make a  "boot"  diskette is  simply to use the
+   DOS  'copy'  command  to  transfer  the  config.sys  file  provided  on  the
+   SUPERNOVA disk to your chosen "boot" disk (i.e. copy config.sys b:).
+
+*  Further  instructions  will be  offered  when you  run the  INSTALL  program
+   that is provided on the SUPERNOVA diskette.
+

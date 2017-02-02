@@ -1,0 +1,24 @@
+                         _____________________________
+                        |                             |
+                        |      S U P E R N O V A      |
+                        |                             |
+                        |   I N S T A L L A T I O N   |
+                        |_____________________________|
+
+These notes will help you get started as soon as possible:
+
+* SUPERNOVA  cannot be  booted  from the  game  diskette  because  there is not
+  enough memory  left on the  diskette  to put a  command.com  file.  Therefore
+  it is  necessary  to power-on  your  computer  with a disk  that DOES  have a
+  command.com  file on it (in the  directory.)  The diskette  you decide to use
+  will become your "boot" (or power-on) diskette--this disk must be  installed.
+
+There are two ways to install a SUPERNOVA "boot" disk:
+
+ 1) Copy the config.sys  file (included on your game diskette) to the  diskette
+    you  plan  to use  when  you  power-on  your  computer  to play  SUPERNOVA.
+                                      OR
+ 2) Use the  INSTALL  program  (included  on you  game  diskette) to  create  a
+    config.sys  file.  The INSTALL  program is  explained on the  next  screen.
+
+
