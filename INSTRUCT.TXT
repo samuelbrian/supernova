@@ -1,0 +1,119 @@
+
+                       SUPERNOVA INSTRUCTIONS
+                       ----------------------
+
+Supernova is an adventure set in the future.  You begin on a remote
+mining planet, with little to look forward to except another back-
+breaking day in the mines.
+
+To play Supernova, type sentences such as: OPEN THE HATCH THEN ENTER
+THE SHIP, or SHOOT THE CREATURE WITH THE RAY GUN THEN GET EVERYTHING.
+Supernova recognizes over 1000 words.
+
+Read each room description carefully, examine anything that looks
+important, and try to explore all possible passages and rooms.  Draw
+a map on a piece of paper as you move through Supernova's "world."
+
+1998 Update Notes:
+
+1) This game is no longer registerable.  It has been released (in
+   March of 1998) as freeware.
+
+2) In Game screens still talk about registering, because we have no
+   way of recompiling the game to remove them.
+
+3) Older releases of this game stated that you can receive the source
+   code for $100.  This offer is no longer valid.
+
+4) Supernova is (c) 1986/1998 Apogee Software, Ltd.
+
+
+COMMANDS
+------------------------------------------------------------------------
+
+CLUE - gives a hint associated with your current location.
+COMMANDS or VERBS - shows a two screen list of possible commands.
+FIND [object] - tells if an object is within sight.
+INVENTORY, INV or I - displays your current list of possessions.
+LOOK or L - examines your current location.
+REPEAT or R - repeats last sentence or command.
+RESTART - ends current game and starts a new one.
+RESTORE - resumes a previously SAVED game and lets you continue playing.
+SAVE - lets you save you present game to be RESTORED for later playing.
+ROOM DESCRIPTION or RD - toggles game between full room descriptions
+    each time you enter a new location, or brief descriptions.
+SCORE - gives your current score and rank.
+QUIT or Q - lets you quit your current game.  (Note: you usually will
+    SAVE the game first.)
+WAIT or Z - lets one unit of time to pass without any action.
+
+
+COMMON VERBS
+------------------------------------------------------------------------
+
+EXAMINE or EX [object] - lets you study a specific object.
+GET [object] - adds object to your inventory.
+DROP [object] - removes an object from you inventory.
+    also GET ALL, GET ALL BUT [object], GET [object], [object] AND [object]
+Directions: NORTH, EAST, SOUTHWEST, or N, E, SW, etc.
+EAT [object] and DRINK [object] - used to consume foods and drinks.
+PUSH [object], PULL [object], MOVE [object], and TURN [object]
+LOOK (AT, INSIDE, BEHIND, UNDER, ON TOP OF) [object]
+WEAR [object] and REMOVE [object] - used for clothing.
+THROW [object] (AT, TO, ACROSS, IN DIRECTION OF) [object]
+PUT [object] (WITHIN, UNDER, ON TOP OF, BESIDE, BEHIND, etc.) [object]
+GIVE or SHOW [object] to [object or creature]
+OPEN or UNLOCK [object] with [object]
+TURN [dial] TO [position] - e.g. TURN RED DIAL TO 56.
+TYPE [something] - used to enter data on keyboards, etc.
+HIT [object] WITH [object]
+BUY [object] WITH [object] or BUY [object] FROM [person]
+[character name], [what you want to say to character] - use this format
+    when you want to say something to someone else in the game.
+    i.e.  ALIENS, CAN YOU TELL ME ABOUT THE CRYSTAL.
+
+
+ADVERBS
+------------------------------------------------------------------------
+
+QUICKLY
+SLOWLY
+CAREFULLY
+CLOSELY
+
+
+ENTERING COMMANDS, PHRASES, FULL SENTENCES
+------------------------------------------------------------------------
+
+All commands, etc. are entered at the blinking ">>".
+
+A simple phrase might be DRINK, WALK EAST or EX CONTROLS.  Every phrase
+may contain only one verb.
+
+Multiple verb phrases and commands may be combined on a single input line
+by separating with a period or the word THEN.  For example, EAST. NORTH.
+OPEN HATCH THEN CLIMB DOWN LADDER.  The word IT refers to the last noun.
+
+The game only understands the first seven letters of any word used.
+
+
+SAVE AND RESTORE COMMANDS
+------------------------------------------------------------------------
+
+SAVE and RESTORE are necessary because completing a game may require many
+hours of play.
+
+Before you finish a game session, type SAVE.  The game will clear the
+screen and respond: "Which disk drive?" (default is A)  If you have a
+two-drive system, insert a formatted disk in drive B and type B [enter].
+With a single-drive system, remove the game disk and insert a formatted
+disk, press [enter].  The game will respond: "SAVE under what file name?"
+(Note: '/' aborts the SAVE.)  Type in a file name that the game can use to
+save you current game location and status.  It is best to use a name that
+refers to your current room, i.e. KITCHEN.  Also at this point you can
+type DIR or FILES to get a current list of save names already in use on
+that disk.
+
+RESTORE your file in the same way, but with the RESTORE command
+
+========================================================================
