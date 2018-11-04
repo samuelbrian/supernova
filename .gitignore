@@ -1,0 +1,13 @@
+*.o
+NOVA
+NOVA.EXE
+SPECIAL
+SPECIAL.EXE
+ROOMRITE
+ROOMRITE.EXE
+LINERITE
+LINERITE.EXE
+A_*
+B_*
+Supernova-*.tar.gz
+Supernova-*.zip
