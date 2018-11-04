@@ -30,7 +30,7 @@
 (*****************************************************************************)
 
                        {VERB LIST:  GROUPS ALL SYNONYMS}
-overlay procedure Assign1;
+procedure Assign1;
 begin
 v[1]:='north\n\fore\f\';
 v[2]:='south\s\aft\a\';
@@ -78,7 +78,7 @@ v[43]:='flip\turn off\deactiv\';
 v[44]:='push\move\press\turn on\';        {cont}
 v[45]:='activat\flip on\push on\';
 end; { Assign1 }
-overlay procedure Assign2;
+procedure Assign2;
 begin
 v[46]:='drink some\drink from\drink\';
 v[47]:='eat\swallow\digest\consume\';
@@ -133,7 +133,7 @@ v[95]:='command\verbs\verb\words\';
 end; { Assign2 }
 
                      {NOUN LIST:  GROUPS ALL OBJECTS}
-overlay procedure Assign3;
+procedure Assign3;
 begin
 n[1]:='clear crystal\clear\crystal\';
 n[2]:='device\';
@@ -183,7 +183,7 @@ n[45]:='buttons\';
 n[46]:='robot\defense robot\defense\';    {cont at #133}
 n[47]:='vines\vine\branche\branch\';
 end; { Assign3 }
-overlay procedure Assign4;
+procedure Assign4;
 begin
 n[48]:='dial\knob\dials\knobs\tap\';
 n[49]:='ground\floor\earth\deck\bay\';    {cont}
@@ -232,7 +232,7 @@ n[91]:='serum dispens\';
 n[92]:='serum\medicin\cure\liquid\';
 n[93]:='platform\platfor\';
 end; { Assign4 }
-overlay procedure Assign5;
+procedure Assign5;
 begin
 n[94]:='booth\transpo\';
 n[95]:='wristband\wristba\transla\';
@@ -300,7 +300,7 @@ end; { Assign5 }
 
                                {ROOM  NAMES}
 
-overlay procedure Names1;
+procedure Names1;
 begin
 rn[1]:='Bridge';
 rn[2]:='Forward Corridor';
@@ -343,7 +343,7 @@ rn[38]:='Departure Room';
 rn[39]:='Holey Hall';
 rn[40]:='Pyramid Lobby';
   end; { Names1 }
-overlay procedure Names2;
+procedure Names2;
 begin
 rn[41]:='Treasure''s Keeper';
 rn[42]:='Ladder Room';
@@ -386,7 +386,7 @@ rn[78]:='Icy Platform';
 rn[79]:='Confirmation Port';
 rn[80]:='Inspection Lobby';
   end; { Names2 }
-overlay procedure Names3;
+procedure Names3;
 begin
 rn[81]:='Circular Corridor';
 rn[82]:=rn[81];
@@ -421,7 +421,7 @@ rn[109]:='Medical Quarters #6';
 
 
                                {ROOM  NAMES}
-overlay procedure Place1;
+procedure Place1;
  begin
 for x:=1 to RMax do L[x]:=[];
 L[1]:=[16,35..41,43,44,52,55,56,59,62,112,120,125];
@@ -474,7 +474,7 @@ L[53]:=[];
 L[54]:=[];
 L[55]:=[11];
  end; { Place1 }
-overlay procedure Place2;
+procedure Place2;
  begin
 L[56]:=[66,68,110];
 L[57]:=[56,72,82,103,109];

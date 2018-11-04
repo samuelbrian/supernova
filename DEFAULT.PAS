@@ -56,7 +56,7 @@ case Vb of
  end {main case}
 end; { Default0 }
 {----------}
-overlay procedure Default1;
+procedure Default1;
 begin
 case Vb of
 
@@ -121,7 +121,7 @@ case Vb of
  end; {main case}
 end; { Default1 }
 {----------}
-overlay procedure Default2;
+procedure Default2;
  label JUMP;
 begin
 case Vb of
@@ -138,13 +138,13 @@ case Vb of
             'should first use the');writeln('SAVE command.');
     write('Are you still sure you want to QUIT?  ');
     Cur(2);
-    read(kbd,CFlag);
+    CFlag := readkey;
     if upcase(CFlag)='Y' then
      begin
+      {$I-}
       RL(12);delay(2200);
       close(R1);close(R2);close(S1);close(L1);close(C1);close(T1);close(T2);
-      window(1,1,80,25);nosound;clrscr;Cur(1);Bor(0,0);gotoxy(2,2);
-      Col(31,16);Bak(4,7);writeln('Good-bye!');halt;
+      window(1,1,80,25);nosound;clrscr;halt;
      end
     else RL(13);Bor(0,0);
    end;
@@ -214,7 +214,7 @@ case Vb of
  end; {main case}
 end; { Default2 }
 {----------}
-overlay procedure Default3;
+procedure Default3;
 begin SFlag:=false;
 case Vb of
 
@@ -279,7 +279,7 @@ case Vb of
  end {main case}
 end; { Default3 }
 {----------}
-overlay procedure Default4;
+procedure Default4;
 begin
 case VB of
 
@@ -355,7 +355,7 @@ case VB of
  end; {main case}
 end; { Default4 }
 {----------}
-overlay procedure Default5;
+procedure Default5;
  label JUMP,JUMP1;
 begin
 case Vb of
@@ -429,7 +429,7 @@ JUMP: if MugCon<>Null then
  end; {main case}
 end; { Default5 }
 {----------}
-overlay procedure Default6;
+procedure Default6;
  function Word(W:Str29):boolean;
   begin if pos(' '+W+' ',input)>0 then Word:=true else Word:=false end;
 begin
@@ -500,7 +500,7 @@ case Vb of
  end; {main case}
 end; { Default6 }
 {----------}
-overlay procedure Default7;
+procedure Default7;
 begin
 case Vb of
 
@@ -560,7 +560,7 @@ case Vb of
 93:if Pr=6 then
     if(N2 in Mov)or(N2=60)then
      case N1 of
-      60:begin Cur(2);write('Are you sure? ');read(kbd,CFlag);Cur(3);writeln;
+      60:begin Cur(2);write('Are you sure? ');CFlag := readkey;Cur(3);writeln;
           if upcase(CFlag)='Y' then begin RL(488);Add(128);end
           else writeln('Whew!')end;
       123:RL(465);
@@ -580,7 +580,7 @@ case Vb of
  end; {main case}
 end; { Default7 }
 {----------}
-overlay procedure Default8;
+procedure Default8;
  label JUMP;
 begin
 case Vb of
@@ -653,7 +653,7 @@ case Vb of
  end; {main case}
 end; { Default8 }
 {----------}
-overlay procedure Default9;
+procedure Default9;
  label JUMP;
 begin
 case Vb of
@@ -668,7 +668,7 @@ case Vb of
     29:if MugCon<>Null then writeln('The mug contains ',FN(MugCon),'.')
        else RL(111);
     35:if NStr='toilet' then RL(114)else RL(113);
-    7,10,26,28,32,62,64,69,98,113:writeln('The ',NStr,' is empty.');
+    10,26,28,32,62,64,69,98,113:writeln('The ',NStr,' is empty.');
     119:RL(112);
     103..109,115,118:if Prm=63 then RL(113)else RL(115)
     else RL(113)
@@ -698,7 +698,7 @@ case Vb of
     if not en(15) then
      begin Add(15);RS(30);
       Cur(2);
-      write('Do you still wish to see the clue? ');read(kbd,CFlag);writeln;
+      write('Do you still wish to see the clue? ');CFlag := readkey;writeln;
       if upcase(CFlag)='N' then
        begin writeln('OK, no clue will be shown.');goto JUMP;end
      end;
@@ -714,7 +714,7 @@ case Vb of
  end; {main case}
 end; { Default9 }
 {----------}
-overlay procedure Default10;
+procedure Default10;
 begin
 case Vb of
 
@@ -796,7 +796,7 @@ case Vb of
  end; {main case}
 end; { Default10 }
 {----------}
-overlay procedure Default11;
+procedure Default11;
 begin
 case Vb of
 
@@ -850,12 +850,13 @@ case Vb of
 { RESTART }
 86:begin Bor(1,0);Cur(2);
     write('Are you sure you want to restart your game? ');
-    read(kbd,CFlag);
+    CFlag := readkey;
     if upcase(CFlag)<>'Y' then RL(169)
     else
      begin RL(170);delay(2000);window(1,1,80,25);clrscr;Bor(0,0);nosound;
+      {$I-}
       close(R1);close(R2);close(S1);close(L1);close(C1);close(T1);close(T2);
-      assign(R1,'nova.com');execute(R1)
+      halt(executeProcess(ParamStr(0), '', []));
      end;Bor(0,0);
    end;
 
@@ -873,7 +874,7 @@ case Vb of
  end; {main case}
 end; { Default11 }
 {----------}
-overlay procedure Default12;
+procedure Default12;
 begin
 case Vb of
 
@@ -944,7 +945,7 @@ case Vb of
  end; {main case}
 end; { Default12 }
 {----------}
-overlay procedure Default13;
+procedure Default13;
 begin
 case Vb of
 
@@ -1011,7 +1012,7 @@ case Vb of
  end; {main case}
 end; { Default13 }
 {----------}
-overlay procedure Default14;
+procedure Default14;
 begin
 case Vb of
 
@@ -1070,7 +1071,7 @@ case Vb of
  end; {main case}
 end; { Default14 }
 {----------}
-overlay procedure DeadMain;
+procedure DeadMain;
   label JUMP;
  begin writeln;
   gotoxy(1,20);for x:=5 downto 1 do
@@ -1098,13 +1099,14 @@ overlay procedure DeadMain;
    write('Would you like to ');Col(14,15);write('S');Col(11,7);
    write('tart a new game, ');Col(14,15);write('R');Col(11,7);
    write('estore or ');Col(14,15);write('Q');Col(11,7);write('uit? ');
-   read(kbd,CFlag);CFlag:=upcase(CFlag);Col(9,15);writeln(CFlag);
+   CFlag := readkey;CFlag:=upcase(CFlag);Col(9,15);writeln(CFlag);
    play(500,500,40);Col(11,7);
   until CFlag in['S','R','Q'];Bor(0,0);Cur(3);
   case CFlag of
    'S':begin RL(170);delay(1500);window(1,1,80,25);clrscr;
+        {$I-}
         close(R1);close(R2);close(S1);close(L1);close(C1);close(T1);close(T2);
-        assign(R1,'nova.com');execute(R1)
+        halt(executeProcess(ParamStr(0), '', []));
        end;
    'R':begin Min(126);Restore;if not en(126)then goto JUMP end;
    'Q':begin window(1,1,80,25);clrscr;Col(3,7);

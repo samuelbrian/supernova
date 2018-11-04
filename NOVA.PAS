@@ -29,7 +29,9 @@
 (*                       Copyright 1985 Scott Miller                        *)
 (****************************************************************************)
 
-{$C-,R-,V-,K-}
+{$C-,R-,V-}
+
+uses crt, sysutils;
 
 const
    VMax    = 95;     { Verbs   }
@@ -122,7 +124,7 @@ var
    Weight,
    Old,      { for Block Reader }
    Old2,
-   x,y,o   : byte;
+   x,y,o   : integer;
    Code,     { dials, etc }
    Tic,
    StoreR,   { Knows if the previous Room that was read is the same as the  }
@@ -145,7 +147,7 @@ var
    R1,R2,S1: file of Str234;
    L1      : file of Str78;
    C1      : file of Str77;
-   T1,T2   : text[2500];
+   T1,T2   : text;
    Identity,
    VStr,
    NStr,
@@ -163,7 +165,7 @@ var
    SFlag   : boolean;  { If TRUE then a Special action took place. }
 {----------}
 
-{$Ia:ADPAR.pas   <<<<<------  LOADS IN MANY PARSER COMMANDS  ***************}
+{$I ADPAR.pas   <<<<<------  LOADS IN MANY PARSER COMMANDS  ***************}
 
 procedure Describe(Room:byte);
  begin
@@ -232,11 +234,11 @@ procedure Move{New:byte};
  end; { Move }
 
 
-{$Ia:VOCAB.pas    <<<<<-------  Loads in VOCABULARY LIST  **********}
+{$I VOCAB.pas    <<<<<-------  Loads in VOCABULARY LIST  **********}
 
 
 {****************************** ROOM ROUTINES *******************************}
-overlay procedure Room1;   { The Player's Ship }
+procedure Room1;   { The Player's Ship }
 begin
 case Prm of
  1:case Vb of  { Bridge }
@@ -306,7 +308,7 @@ case Prm of
  end; {main case}
 end; { Room1 }
 {----------}
-overlay procedure Room2;   { The Player's Ship }
+procedure Room2;   { The Player's Ship }
 begin
 case Prm of
  2:case Vb of  { Forward Corridor }
@@ -348,7 +350,7 @@ case Prm of
  end; {main case}
 end; { Room2 }
 {----------}
-overlay procedure Room3;   { The Player's Ship }
+procedure Room3;   { The Player's Ship }
 begin
 case Prm of
 
@@ -415,7 +417,7 @@ case Prm of
  end; {main case}
 end; { Room3 }
 {----------}
-overlay procedure Room4;   { The Tavern }
+procedure Room4;   { The Tavern }
 begin
 case Prm of
  8:case Vb of  { Tavern }
@@ -494,7 +496,7 @@ case Prm of
  end; {main case}
 end; { Room4 }
 {----------}
-overlay procedure Room5;   { Barre-An Planet }
+procedure Room5;   { Barre-An Planet }
  procedure Zap; begin for x:=1 to 29 do if R[x]=Prm then Van(x) end;
 begin
 case Prm of
@@ -579,7 +581,7 @@ case Prm of
  end {main case}
 end; { Room5 }
 {----------}
-overlay procedure Room6;   { Jungle Planet }
+procedure Room6;   { Jungle Planet }
 begin
 case Prm of
 23:case Vb of  { Deep Pit }
@@ -605,7 +607,7 @@ case Prm of
 25:case Vb of { Sandy Clearing }
    4,9,51:if N1 in[Null,62,71] then begin RL(234);move(24)end;
    1:begin move(26);Score(5,75)end;
-   1..8:RL(200);
+   2,3,5..8:RL(200);
    end; {Vb}
 
 26:case Vb of { Winding Path 1 }
@@ -614,7 +616,7 @@ case Prm of
    59:if N1=66 then
        if VStr='jump in' then begin RL(288);DEAD;end
        else begin RS(66);move(27);Score(25,76)end;
-   1..8:RL(200);
+   1,3,4,6,7,8:RL(200);
    9,51:if N1=112 then RL(204);
    28:if N1=66 then RS(85);
    35,62:if N1=66 then begin RL(288);DEAD;end;
@@ -626,7 +628,7 @@ case Prm of
 27:case Vb of { Winding Path 2 }
    6:move(28);
    8,11:begin RS(65);DEAD;end;
-   1..8:RL(200);
+   1..5,7:RL(200);
    9,51:if N1=112 then RL(204);
    59:if N1=66 then
        if VStr='jump in' then begin RL(288);DEAD;end
@@ -642,7 +644,7 @@ case Prm of
    7:move(27);
    6:move(29);
    8:begin RS(67);DEAD;end;
-   1..8:RL(200);
+   1..5:RL(200);
    9,51:if N1=112 then RL(204);
    28:if N1=112 then RS(86);
    24:if N1=112 then RL(553);
@@ -655,7 +657,7 @@ case Prm of
    9,51:if N1 in[Null,112] then begin RL(201);move(30)end;
    6:begin RS(69);Prm:=31;T[11]:=4;end;
    8:if en(35)or en(130)then begin RC:=1;move(59);Score(20,77)end;
-   1..8:RL(200);
+   1..4:RL(200);
    28:case N1 of 112:RL(238);120:RL(544);
        113:if Md=1 then begin RL(314);Add(130)end end;
    59:if N1=120 then begin RL(541);Prm:=31;T[11]:=4;end;
@@ -664,7 +666,7 @@ case Prm of
  end {main case}
 end; { Room6 }
 {----------}
-overlay procedure Room7;   { Jungle Planet }
+procedure Room7;   { Jungle Planet }
 begin
 case Prm of
 30:case Vb of { Top of Tree }
@@ -686,14 +688,14 @@ case Prm of
 32:case Vb of { Winding Path 5 }
    1:move(33);
    8:begin move(29);if en(35) and not en(40) then begin RL(314);Add(40)end end;
-   1..8:RL(200);
+   2..7:RL(200);
    9,51:if N1=112 then RL(204);
    end;
 
 33:case Vb of { Winding Path 6 }
    2:move(32);
    6:if not en(28)then begin RS(68);Add(28);move(34)end else move(34);
-   1..8:RL(200);
+   1,3..5,7,8:RL(200);
    9,51:if N1=112 then RL(204);
    end;
 
@@ -712,7 +714,7 @@ case Prm of
    39:if(PyraCon in NounSet)or((30 in Nounset)and(PyraCon=9))then
        begin RL(225);Min(30);SFlag:=false;end else
       if HingeCon in NounSet then begin RL(228);SFlag:=false;end;
-   1..8:RL(200);
+   2..6,8:RL(200);
    9,51:if N1=112 then RL(204);
    92:if N1 in[Null,49,122] then begin RL(216);move(23) end;
    31:if N1 in[81,89,119] then begin RB(8,7);Pause;end;
@@ -730,7 +732,7 @@ case Prm of
  end {main case}
 end; { Room7 }
 {----------}
-overlay procedure Room8;   { Inside Pyramid (Top Level) }
+procedure Room8;   { Inside Pyramid (Top Level) }
 begin
 case Prm of
 35:case Vb of  { Vestibule }
@@ -771,7 +773,7 @@ case Prm of
  end {main case}
 end; { Room8 }
 {----------}
-overlay procedure Room9;   { Inside Pyramid (Top Level) }
+procedure Room9;   { Inside Pyramid (Top Level) }
 begin
 case Prm of
 39:case Vb of  { Holey Hall }
@@ -821,7 +823,7 @@ case Prm of
  end {main case}
 end; { Room9 }
 {----------}
-overlay procedure Room10;   { Pyramid Maze }
+procedure Room10;   { Pyramid Maze }
 begin
 case Prm of
 42:case Vb of  { Ladder Room }
@@ -893,7 +895,7 @@ case Prm of
  end {main case}
 end; { Room10 }
 {----------}
-overlay procedure Room11;   { Inside Pyramid (Bottom Level) }
+procedure Room11;   { Inside Pyramid (Bottom Level) }
 begin
 case Prm of
 51:case Vb of  { Lower Stairway }
@@ -947,7 +949,7 @@ case Prm of
  end {main case}
 end; { Room11 }
 {----------}
-overlay procedure Room12;   { Inside Pyramid (Bottom Level) }
+procedure Room12;   { Inside Pyramid (Bottom Level) }
 begin
 case Prm of
 56:case Vb of  { The Erusaert }
@@ -1016,7 +1018,7 @@ case Prm of
  end {main case}
 end; { Room12 }
 {----------}
-overlay procedure Room13;   { Inside Pyramid (Bottom Level) }
+procedure Room13;   { Inside Pyramid (Bottom Level) }
 begin
 case Prm of
 57:case Vb of  { Solar Chamber }
@@ -1033,7 +1035,7 @@ case Prm of
 59:case Vb of  { Overgrown Path }
    5:begin RC:=RC-1;if RC<1 then begin RL(309);move(29)end else RL(310)end;
    8:begin RC:=RC+1;if RC>7 then begin RL(309);move(60)end else RL(310)end;
-   1..8:RL(200);
+   1..4,6,7:RL(200);
    9,51:if N1=112 then RL(204);
    end;
 
@@ -1041,7 +1043,7 @@ case Prm of
    4,11:begin Door(61,25);
          if not en(43)then begin RS(137);Score(10,43)end end;
    5:move(59);
-   1..8:RL(200);
+   1..3,6,7,8:RL(200);
    28:case N1 of 96:RL(323);115:RL(324)end;
    41..44,54,75,88:if N1=56 then RL(315);
    9,51:if N1=112 then RL(204)else RL(316);
@@ -1088,7 +1090,7 @@ case Prm of
  end {main case}
 end; { Room13 }
 {----------}
-overlay procedure Room14;   { Inner Planet }
+procedure Room14;   { Inner Planet }
 begin
 case Prm of
 64:case Vb of  { Lobby }
@@ -1173,7 +1175,7 @@ case Prm of
  end {main case}
 end; { Room14 }
 {----------}
-overlay procedure Room15;   { Inner Planet }
+procedure Room15;   { Inner Planet }
 begin
 case Prm of
 68:case Vb of  { Decontamination }
@@ -1213,7 +1215,7 @@ case Prm of
  end {main case}
 end; { Room15 }
 {----------}
-overlay procedure Room16;   { Inner Planet }
+procedure Room16;   { Inner Planet }
 begin
 case Prm of
 73:case Vb of  { Communications }
@@ -1261,7 +1263,7 @@ case Prm of
  end {main case}
 end; { Room16 }
 {----------}
-overlay procedure Room17;   { Planetship }
+procedure Room17;   { Planetship }
 begin
 case Prm of
 78:case Vb of  { Icy Platform }
@@ -1302,7 +1304,7 @@ case Prm of
  end {main case}
 end; { Room17 }
 {----------}
-overlay procedure Room18;   { Planetship }
+procedure Room18;   { Planetship }
 begin
 case Prm of
 81:case Vb of  { Circular Corridor }
@@ -1370,7 +1372,7 @@ case Prm of
  end {main case}
 end; { Room18 }
 {----------}
-overlay procedure Room19;   { Planetship }
+procedure Room19;   { Planetship }
 begin
 case Prm of
 84:case Vb of  { Circular Corridor }
@@ -1434,13 +1436,13 @@ case Prm of
              begin i:=random(7000)+999;play(i,i,50);delay(random(15)+5)end
            end else
           if N1 in[38,128]then RL(403);
-     42,75:if N1 in[38,128]then RL(403);
+     42,43,45..74:if N1 in[38,128]then RL(403);
    end;
 
  end {main case}
 end; { Room19 }
 {----------}
-overlay procedure Room20;   { Planetship }
+procedure Room20;   { Planetship }
 begin
 case Prm of
 90:case Vb of  { Reactors East }
@@ -1496,7 +1498,7 @@ case Prm of
  end {main case}
 end; { Room20 }
 {----------}
-overlay procedure Room21;   { Planetship }
+procedure Room21;   { Planetship }
 begin
 case Prm of
 94:case Vb of  { Maintenance }
@@ -1558,7 +1560,7 @@ case Prm of
  end {main case}
 end; { Room21 }
 {----------}
-overlay procedure Room22;   { Planetship (Lower Level) }
+procedure Room22;   { Planetship (Lower Level) }
 begin
 case Prm of
 101:case Vb of  { Security Tunnel #3 }
@@ -1621,7 +1623,7 @@ case Prm of
  end {main case}
 end; { Room22 }
 {----------}
-overlay procedure Room23;   { Planetship (Lower Level) }
+procedure Room23;   { Planetship (Lower Level) }
  label JUMP;
 begin
 case Prm of
@@ -1687,7 +1689,7 @@ end; { Room23 }
 {**************************** END OF ROOM ROUTINES **************************}
 
 
-{$Ia:DEFAULT.pas   <<<<<------  LOADS IN DEFAULT ROUTINES  *******************}
+{$I DEFAULT.pas   <<<<<------  LOADS IN DEFAULT ROUTINES  *******************}
 
 
 BEGIN { Main Program }

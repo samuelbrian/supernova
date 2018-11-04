@@ -7,3 +7,4 @@ type help2.txt
 pause
 cls
 type help3.txt
+pause
